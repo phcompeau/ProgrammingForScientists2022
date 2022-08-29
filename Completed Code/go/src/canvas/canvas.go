@@ -17,8 +17,7 @@ import (
 	"math"
 	"os"
 
-	"code.google.com/p/draw2d/draw2d"
-	//"github.com/llgcode/draw2d/draw2dkit"
+	"old/code.google.com/p/draw2d/draw2d"
 )
 
 type Canvas struct {
