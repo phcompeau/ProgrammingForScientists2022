@@ -17,11 +17,11 @@ import (
 	"math"
 	"os"
 
-	"old/code.google.com/p/draw2d/draw2d"
+	"github.com/llgcode/draw2d/draw2dimg"
 )
 
 type Canvas struct {
-	gc     *draw2d.ImageGraphicContext
+	gc     *draw2dimg.GraphicContext
 	img    image.Image
 	width  int // both width and height are in pixels
 	height int
@@ -34,7 +34,7 @@ func GetImage(c Canvas) image.Image {
 // Create a new canvas
 func CreateNewCanvas(w, h int) Canvas {
 	i := image.NewRGBA(image.Rect(0, 0, w, h))
-	gc := draw2d.NewGraphicContext(i)
+	gc := draw2dimg.NewGraphicContext(i)
 
 	gc.SetStrokeColor(image.Black)
 	gc.SetFillColor(image.White)
@@ -51,7 +51,7 @@ func CreateNewPalettedCanvas(w, h int, cp color.Palette) Canvas {
 		cp = palette.WebSafe
 	}
 	i := image.NewPaletted(image.Rect(0, 0, w, h), cp)
-	gc := draw2d.NewGraphicContext(i)
+	gc := draw2dimg.NewGraphicContext(i)
 
 	gc.SetStrokeColor(image.Black)
 	gc.SetFillColor(image.White)
