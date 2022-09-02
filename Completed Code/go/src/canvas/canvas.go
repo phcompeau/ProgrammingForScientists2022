@@ -27,7 +27,7 @@ type Canvas struct {
 	height int
 }
 
-func GetImage(c Canvas) image.Image {
+func (c *Canvas) GetImage() image.Image {
 	return c.img
 }
 
