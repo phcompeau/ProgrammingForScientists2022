@@ -1,0 +1,7 @@
+galaxy 20
+brain 12
+take 17
+-
+I 200
+don't 14
+care 99

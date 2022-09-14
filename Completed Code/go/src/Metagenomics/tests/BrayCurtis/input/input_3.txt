@@ -1,0 +1,11 @@
+bears 4
+turkeys 7
+coyotes 0
+deer 2
+groundhogs 8
+-
+bears 0
+turkeys 5
+coyotes 8
+deer 4
+groundhogs 6

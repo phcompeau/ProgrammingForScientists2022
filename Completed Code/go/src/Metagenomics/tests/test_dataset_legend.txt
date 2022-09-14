@@ -2,9 +2,8 @@ Richness:
 
 0. Normal case -- small number of keys, positive values
 1. One of the keys has a zero value
-2. One of the keys has a negative value
-3. A single element with a positive value
-4. Duplicate keys
+2. A single element with a positive value
+3. Duplicate keys
 
 
 Simpsons Index:
@@ -22,15 +21,13 @@ Bray Curtis:
 1. Identical maps -- distance = 0
 2. No shared keys -- distance = 1
 3. There are shared keys but values = 0 for them in one map
-4. One map has keys that the other does not
-5. Switch the two maps from previous dataset.
-6. One map is a subset of the other
+4. Map 1 is a subset of map 2.
+5. Map 2 is a subset of map 1.
 
 Jaccard:
 0. Normal case (same number of keys)
 1. Identical maps -- distance = 0
 2. No shared keys -- distance = 1
 3. There are shared keys but values = 0 for them in one map
-4. One map has keys that the other does not
-5. Switch the two maps from previous dataset.
-6. One map is a subset of the other
+4. Map 1 is a subset of map 2.
+5. Map 2 is a subset of map 1.

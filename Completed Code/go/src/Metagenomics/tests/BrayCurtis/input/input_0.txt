@@ -1,0 +1,5 @@
+coyotes 499
+deer 501
+-
+coyotes 501
+deer 499

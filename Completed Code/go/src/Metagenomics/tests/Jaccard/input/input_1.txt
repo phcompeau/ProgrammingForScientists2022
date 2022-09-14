@@ -1,0 +1,7 @@
+blue 2
+green 3
+purple 1
+-
+purple 1
+blue 2
+green 3

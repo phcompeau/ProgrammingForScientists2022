@@ -1,0 +1,6 @@
+lions 2
+tigers 4
+-
+bears 2
+lions 4
+tigers 3
