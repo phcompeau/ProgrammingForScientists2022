@@ -15,7 +15,7 @@ import (
 //object's bodies on a square canvas that is canvasWidth pixels x canvasWidth pixels
 func DrawToCanvas(u Universe, canvasWidth int) image.Image {
 	// set a new square canvas
-	c := canvas.CreateNewPalettedCanvas(canvasWidth, canvasWidth, nil)
+	c := canvas.CreateNewCanvas(canvasWidth, canvasWidth)
 
 	// create a black background
 	c.SetFillColor(canvas.MakeColor(0, 0, 0))
