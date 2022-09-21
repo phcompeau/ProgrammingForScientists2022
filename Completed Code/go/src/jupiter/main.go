@@ -1,11 +1,15 @@
 package main
 
 import (
+	"fmt"
+	"gifhelper"
 	"math"
+	"os"
+	"strconv"
 )
 
 //G is the gravitational constant in the gravitational force equation.  It is declared as a "global" constant that can be accessed by all functions.
-const G = 6.67408e-11
+const G = 0.5 * 6.67408e-11
 
 func main() {
 	// declaring objects
@@ -53,4 +57,60 @@ func main() {
 	jupiterSystem.bodies = []Body{jupiter, io, europa, ganymede, callisto}
 
 	// now we need to implement the system
+
+	//let's take command line arguments from the user
+	//Go has built-in array called os.Args that is an array of strings.
+	//os.Args[0] is program name ("jupiter".)
+	//os.Args[1] is first command line argument.
+	//os.Args[i] - the i-th command line argument.
+	//etc.
+
+	//this would be bad: numGens := os.Args[1]. Must parse
+	numGens, err1 := strconv.Atoi(os.Args[1])
+	if err1 != nil {
+		panic(err1)
+	}
+	if numGens < 0 {
+		panic("Negative number of generations given.")
+	}
+
+	//os.Args[2] is going to be time step parameter
+	time, err2 := strconv.ParseFloat(os.Args[2], 64)
+	if err2 != nil {
+		panic(err2)
+	}
+
+	//os.Args[3] is the canvas width
+	canvasWidth, err3 := strconv.Atoi(os.Args[3])
+	if err3 != nil {
+		panic(err3)
+	}
+
+	//os.Args[4] is how often to make a canvas
+	drawingFrequency, err4 := strconv.Atoi(os.Args[4])
+	if err4 != nil {
+		panic(err4)
+	}
+
+	fmt.Println("Command line arguments read successfully.")
+
+	fmt.Println("Simulating system.")
+
+	timePoints := SimulateGravity(jupiterSystem, numGens, time)
+
+	fmt.Println("Gravity has been simulated!")
+	fmt.Println("Ready to draw images.")
+
+	images := AnimateSystem(timePoints, canvasWidth, drawingFrequency)
+
+	fmt.Println("Images drawn!")
+
+	fmt.Println("Making GIF.")
+
+	gifhelper.ImagesToGIF(images, "jupiter")
+
+	fmt.Println("Animated GIF produced!")
+
+	fmt.Println("Exiting normally.")
+
 }
