@@ -39,8 +39,74 @@ func (c *Circle) Translate(a, b float64) {
 //write methods for rectangles and circles that translate each shape by a units in the x direction and b units in the y direction
 
 func main() {
+	DeleteExample()
+}
 
-	Rectangles()
+func DeleteExample() {
+	a := make([]int, 5)
+	for i := range a {
+		a[i] = 2*i + 1
+	}
+	index := 2
+
+	a = BetterDeleteElement(a, index)
+	// this is why it's a = append(a, item) and not just append(a, item)
+
+	fmt.Println("a is", a)
+
+	fmt.Println("length of a is", len(a))
+
+	b := a[3:5]
+	fmt.Println("It's alive:", b)
+}
+
+func DeleteElement(list []int, index int) {
+	list = append(list[:index], list[index+1:]...)
+	fmt.Println("list is", list)
+
+	fmt.Println(len(list))
+}
+
+func BetterDeleteElement(list []int, index int) []int {
+	list = append(list[:index], list[index+1:]...)
+
+	return list
+}
+
+func Slices() {
+	a := make([]int, 5)
+	ChangeFirst(a)
+	fmt.Println(a)
+
+	//a slice is a pointer to a location in an array
+	//(it's more than that; it's a pointer + a length)
+
+	var b []int
+	b = make([]int, 10, 20)
+	//create an array of length 20 and b points at the first 10 elements
+	//so, b = make([]int, 10) is shorthand for b = make([]int, 10, 10)
+
+	//let's set some elements of b
+	for i := 0; i < 10; i++ {
+		b[i] = -i - 1
+	}
+
+	fmt.Println(b)
+
+	var q []int = b[8:15]
+
+	fmt.Println("q is", q)
+
+	b[9] = 2375908
+
+	fmt.Println("q is", q)
+
+	q[0] = -25837
+	fmt.Println(b)
+}
+
+func ChangeFirst(list []int) {
+	list[0] = 1
 }
 
 func Rectangles() {
