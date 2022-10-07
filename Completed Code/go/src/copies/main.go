@@ -13,7 +13,35 @@ type Tree struct {
 }
 
 func main() {
-	TreeBlah()
+	//TreeBlah()
+	//ObjectEquals()
+	SliceEquals()
+}
+
+func SliceEquals() {
+	// the following gives a compiler error
+	/*
+		a := []int{1, 5, 2, 1, 3}
+		b := []int{1, 5, 2, 1, 3}
+		if a == b {
+			fmt.Println("Equal!")
+		} else {
+			fmt.Println("Not equal!")
+		}
+	*/
+}
+
+func ObjectEquals() {
+	var v1, v2 Node
+	v1.name = "Bro"
+	v2.name = "Bro"
+	v1.age = 17.0
+	v2.age = 17.0
+	if v1 == v2 {
+		fmt.Println("Equal!")
+	} else {
+		fmt.Println("Not equal!")
+	}
 }
 
 func TreeBlah() {
