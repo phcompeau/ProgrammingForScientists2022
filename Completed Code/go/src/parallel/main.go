@@ -16,7 +16,47 @@ func main() {
 		  fmt.Println(factorial1 * factorial2)
 	*/
 
-	SummingParallel()
+	TimingCraps()
+
+}
+
+func TimingCraps() {
+
+	numTrials := 20000000
+	numProcs := runtime.NumCPU()
+
+	start := time.Now()
+	CrapsHouseEdgeMultiProc(numTrials, numProcs)
+	elapsed := time.Since(start)
+	log.Printf("Simulating craps in parallel took %s", elapsed)
+
+	start2 := time.Now()
+	CrapsHouseEdgeSerial(numTrials)
+	elapsed2 := time.Since(start2)
+	log.Printf("Simulating craps serially took %s", elapsed2)
+}
+
+func Push(k int, c chan int) {
+	time.Sleep(time.Second)
+	c <- k
+}
+
+func BufferedChannels() {
+	n := 10
+	c := make(chan int, n) //capacity of our "buffered" channel
+	//we can get capacity of channel with cap() function
+	fmt.Println("Capacity:", cap(c))
+
+	// buffered channels are not synchronous, meaning you can put
+	// stuff into channel without having to take out at exact same time
+	for k := 0; k < n; k++ {
+		go Push(k, c)
+	}
+	// this is not happening synchronously! (because it's buffered)
+
+	for i := 0; i < n; i++ {
+		fmt.Println(<-c) // will wait until there's something in channel if a process is running
+	}
 }
 
 func SummingParallel() {
