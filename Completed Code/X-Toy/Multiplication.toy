@@ -1,0 +1,30 @@
+/******************************************************************************
+ *  Name: Multiplication.toy
+ *  NetID:
+ *  Precept:
+ *
+ *  Description: Multiplies two given numbers together.
+ *
+ ******************************************************************************/
+
+//take user input from standard in for the two numbers to multiply
+10: 82FF   read R[2]                     
+11: 83FF   read R[3]                     
+12: FF30   R[F] <- PC; goto 30           
+13: 0000   halt                          
+
+
+// Input: R2 and R3              
+// Return address: RF     
+// Output: to screen             
+// Temp vars: R1, R5, R6
+// Note: R3 eventually gets set to zero as a result of function
+30: 7101   R[1] <- 0001                  
+31: 7533   R[5] <- 0033                  
+32: 7600   R[6] <- 0000                  
+33: C337   if (R[3] == 0) goto 37        
+34: 1662   R[6] <- R[6] + R[2]           
+35: 2331   R[3] <- R[3] - R[1]           
+36: E500   goto R[5]                     
+37: 96FF   write R[6]                    
+38: EF00   goto R[F]                     
